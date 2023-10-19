@@ -9,7 +9,7 @@ export const routes = {
 		...options,
 	},
 	remote: {
-		baseURL: "",
+		baseURL: "https://market-stash-server.netlify.app/api/products",
 		...options,
 	},
 };
