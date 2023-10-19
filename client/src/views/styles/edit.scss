@@ -1,0 +1,21 @@
+@use "@/assets/sass/mixins" as *;
+
+.edit-section {
+	@include gradient-background("@/assets/images/edit.png", (rgba(black, 0.5), rgba(black, 0.9)));
+	min-height: 100vh;
+	.table-body {
+		.controllers {
+			.fa-shopping-bag {
+				color: green;
+				margin-left: 10px;
+			}
+			.fa-edit {
+				color: yellow;
+				margin-left: 10px;
+			}
+			.fa-trash-alt {
+				color: red;
+			}
+		}
+	}
+}

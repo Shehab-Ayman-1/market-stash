@@ -1,0 +1,11 @@
+@use "@/assets/sass/mixins" as *;
+
+.notfound {
+	@include flex(center);
+	width: 100%;
+	min-height: calc(100vh - 57px);
+	img {
+		width: 100%;
+		display: block;
+	}
+}

@@ -1,0 +1,12 @@
+@use "@/assets/sass/mixins" as *;
+
+.products-section {
+	.table-section {
+		width: 95%;
+		.table-body {
+			td:first-of-type {
+				width: 100px;
+			}
+		}
+	}
+}

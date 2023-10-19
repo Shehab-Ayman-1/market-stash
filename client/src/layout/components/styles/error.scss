@@ -1,0 +1,29 @@
+@use "@/assets/sass/mixins" as *;
+
+.error-section {
+	background-color: rgba(red, 0.5);
+	width: 300px;
+	margin: auto;
+	border-radius: 20px;
+	box-shadow: get(shadow);
+	.top {
+		@include flex(center);
+		height: 150px;
+		i {
+			color: get(white);
+			font-size: 4rem;
+		}
+	}
+	.bottom {
+		color: get(white);
+		min-height: 150px;
+		text-align: center;
+		h3 {
+			margin-top: 10px;
+		}
+		p {
+			color: get(white);
+			margin-top: 10px;
+		}
+	}
+}
