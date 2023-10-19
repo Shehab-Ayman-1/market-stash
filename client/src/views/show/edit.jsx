@@ -26,7 +26,7 @@ export const Edit = () => {
 	return (
 		<section className="widget-section">
 			<h3 className="title gradient-text">
-				{company?.company} {product?.name}
+				{company?.company} {">>"} {product?.name}
 			</h3>
 
 			{!isSubmitted && loading && <Loading />}

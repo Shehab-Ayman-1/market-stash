@@ -20,7 +20,6 @@ export const productsSlice = createSlice({
 		},
 		filterLists: (state, { payload }) => {
 			const companies = state.lists.find((list) => list.catagory === payload.catagory)?.companies;
-			console.log(payload);
 			const products = companies?.find((item) => item.company === payload.company)?.products;
 
 			state.companiesList = companies?.map((item) => item.company).sort((a, b) => a.localeCompare(b)) || [];

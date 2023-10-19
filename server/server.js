@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // Routes
-app.use("/*", (req, res, next) => setTimeout(() => next(), 0));
 app.use("/api/products", products);
 app.use("/*", (req, res) => res.status(400).json({ method: req.method, url: req.url, message: "Path Not Exist." }));
 

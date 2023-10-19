@@ -52,8 +52,10 @@ export const UPDATE_PRODUCT = async (req, res) => {
 
 export const BUY_PRODUCTS = async (req, res) => {
 	try {
-		const { price, count } = req.body;
+		const { price, count, lastEdit } = req.body;
 		const { companyId, productId } = req.params;
+
+		const edit = { date: new Date(), count };
 
 		await Products.updateOne(
 			{
@@ -61,8 +63,13 @@ export const BUY_PRODUCTS = async (req, res) => {
 				"products._id": productId,
 			},
 			{
-				$set: { "products.$.price": price },
-				$inc: { "products.$.count": count },
+				$set: {
+					"products.$.price": price,
+					"products.$.lastEdits": [edit, lastEdit || edit],
+				},
+				$inc: {
+					"products.$.count": count,
+				},
 			}
 		);
 
@@ -77,13 +84,15 @@ export const EDIT_PRICE = async (req, res) => {
 		const { price } = req.body;
 		const { companyId, productId } = req.params;
 
-		const product = await Products.updateOne(
+		await Products.updateOne(
 			{
 				_id: companyId,
 				"products._id": productId,
 			},
 			{
-				$set: { "products.$.price": price },
+				$set: {
+					"products.$.price": price,
+				},
 			}
 		);
 
@@ -95,16 +104,22 @@ export const EDIT_PRICE = async (req, res) => {
 
 export const SALE_PRODUCTS = async (req, res) => {
 	try {
-		const { count } = req.body;
+		const { count, lastEdit } = req.body;
 		const { companyId, productId } = req.params;
 
-		const product = await Products.updateOne(
+		const edit = { date: new Date(), count: -count };
+		await Products.updateOne(
 			{
 				_id: companyId,
 				"products._id": productId,
 			},
 			{
-				$inc: { "products.$.count": -count },
+				$set: {
+					"products.$.lastEdits": [edit, lastEdit || edit],
+				},
+				$inc: {
+					"products.$.count": -count,
+				},
 			}
 		);
 

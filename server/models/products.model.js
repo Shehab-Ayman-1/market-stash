@@ -9,6 +9,7 @@ const schema = new Schema({
 			name: { type: String, trim: true },
 			count: { type: Number, default: 0 },
 			price: { type: Number, default: 0 },
+			lastEdits: [{ date: Date, count: Number }],
 		},
 	],
 });

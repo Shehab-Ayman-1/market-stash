@@ -20,7 +20,7 @@ export const Show = () => {
 
 	const tableOptions = {
 		headers: {
-			title: `${company?.catagory || ""} ${company?.company || ""}`,
+			title: `${company?.catagory || ""} >> ${company?.company || ""}`,
 			body: ["التحكم", "المنتج", "العدد", "السعر", "الاجمالي"],
 		},
 	};
