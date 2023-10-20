@@ -24,4 +24,4 @@ mongoose.connection.on("connected", () => console.log(`Server Connected 🚀`));
 mongoose.connection.on("disconnected", () => console.log(`Server Disconnected 😢`));
 
 // Server Listenning
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
