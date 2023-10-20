@@ -4,5 +4,5 @@ import { app } from "../server";
 const handler = serverless(app);
 
 export default async (req, res) => {
-	handler(req, res);
+	await handler(req, res);
 };
