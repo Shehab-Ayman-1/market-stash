@@ -122,7 +122,7 @@ export const AddProduct = () => {
 							<div className="catagories">
 								{formData.products.map((_, i) => (
 									<div className="field" key={i}>
-										<Input label={`الشركة ${i + 1}`} id={i} name="product" onChange={handleChange} required />
+										<Input label={`الشركة`} id={i} name="product" onChange={handleChange} required />
 									</div>
 								))}
 							</div>
@@ -141,7 +141,7 @@ export const AddProduct = () => {
 							<div className="companies">
 								{formData.products.map((_, i) => (
 									<div className="field" key={i}>
-										<Input label={`اسم الشركة الجديدة ${i + 1}`} id={i} name="product" onChange={handleChange} required />
+										<Input label={`اسم الشركة الجديدة`} id={i} name="product" onChange={handleChange} required />
 									</div>
 								))}
 							</div>
