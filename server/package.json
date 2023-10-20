@@ -4,6 +4,7 @@
 	"main": "server.js",
 	"type": "module",
 	"license": "ISC",
+	"vercel-build": "cd api && npm install",
 	"engines": {
 		"node": "18.x"
 	},
