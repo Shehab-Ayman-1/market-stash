@@ -4,10 +4,12 @@
 	"main": "server.js",
 	"type": "module",
 	"license": "ISC",
+	"engines": {
+		"node": "14.x"
+	},
 	"scripts": {
 		"start": "node server.js",
-		"dev": "nodemon server.js",
-		"deploy": "netlify deploy && netlify deploy --prod"
+		"dev": "nodemon server.js"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
