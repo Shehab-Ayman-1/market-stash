@@ -6,7 +6,7 @@ import { corsOrigins, DBconnection } from "./configs/index.js";
 import { products } from "./routes/index.js";
 
 // Configs
-export const app = express();
+const app = express();
 dotenv.config();
 app.use(cors(corsOrigins));
 
