@@ -2,16 +2,13 @@ import { Products } from "../models/index.js";
 
 export const GET_HOME_COMPANIES = async (req, res) => {
 	try {
-		const { limit, ...query } = req.query;
+		const { limit } = req.query;
 
-		const products = await Products.find(query);
+		const products = await Products.find()
+			.select(["img", "company"])
+			.limit(limit || 999);
 
-		const uniques = products.reduce((prev, cur) => {
-			const isExist = prev?.find(({ company }) => company === cur.company);
-			return isExist ? prev : prev.concat({ _id: cur._id, img: cur?.img, company: cur?.company });
-		}, []);
-
-		res.status(200).json(uniques.slice(0, limit || 999));
+		res.status(200).json(products);
 	} catch (error) {
 		res.status(404).json(`GET_HOME_COMPANIES: ${error.message}`);
 	}
