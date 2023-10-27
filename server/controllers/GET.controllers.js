@@ -87,12 +87,6 @@ export const TABLE_LISTS = async (req, res) => {
 					companies: 1, // Include companies
 				},
 			},
-
-			{
-				$sort: {
-					"companies.company": 1,
-				},
-			},
 		]);
 		res.status(200).json(lists);
 	} catch (error) {
