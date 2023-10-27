@@ -1,7 +1,7 @@
-// Public
-export * from "./public/input";
-export * from "./public/select";
-export * from "./public/image";
+// UI
+export * from "./ui/input";
+export * from "./ui/select";
+export * from "./ui/image";
 
 // Home
 export * from "./home/company";
