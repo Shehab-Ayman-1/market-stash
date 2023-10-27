@@ -50,6 +50,7 @@ export const TABLE_LISTS = async (req, res) => {
 			{
 				$unwind: "$products", // Add this stage To Seperate Each Product In products To Single Document
 			},
+
 			{
 				$group: {
 					_id: { catagory: "$catagory", company: "$company" }, // Group By Catagory and Company
@@ -65,6 +66,7 @@ export const TABLE_LISTS = async (req, res) => {
 					products: { $push: "$products" }, // Add the products to an array
 				},
 			},
+
 			{
 				$group: {
 					_id: "$_id.catagory", // Group By Catagory
@@ -77,11 +79,18 @@ export const TABLE_LISTS = async (req, res) => {
 					}, // Add the companies to an array
 				},
 			},
+
 			{
 				$project: {
 					_id: 0, // Exclude _id Field
 					catagory: "$_id", // Rename _id To catagory
 					companies: 1, // Include companies
+				},
+			},
+
+			{
+				$sort: {
+					"companies.company": 1,
 				},
 			},
 		]);
