@@ -3,6 +3,19 @@
 .edit-section {
 	@include gradient-background("@/assets/images/edit.png", (rgba(black, 0.5), rgba(black, 0.9)));
 	min-height: 100vh;
+	.table-title {
+		.title {
+			i {
+				width: fit-content;
+				font-size: 20px;
+				display: block;
+				margin-left: auto;
+			}
+			p {
+				padding-bottom: 5px;
+			}
+		}
+	}
 	.table-body {
 		.controllers {
 			.fa-shopping-bag {

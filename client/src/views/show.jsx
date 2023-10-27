@@ -20,7 +20,14 @@ export const Show = () => {
 
 	const tableOptions = {
 		headers: {
-			title: `${company?.catagory || ""} >> ${company?.company || ""}`,
+			title: (
+				<div className="title">
+					<i className="fa fa-times-circle" onClick={() => navigate("/")} />
+					<p>
+						{company?.catagory || ""} {" >> "} {company?.company || ""}
+					</p>
+				</div>
+			),
 			body: ["التحكم", "المنتج", "العدد", "السعر", "الاجمالي"],
 		},
 	};

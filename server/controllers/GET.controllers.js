@@ -6,6 +6,7 @@ export const GET_HOME_COMPANIES = async (req, res) => {
 
 		const products = await Products.find()
 			.select(["img", "company"])
+			.sort("company")
 			.limit(limit || 999);
 
 		res.status(200).json(products);
