@@ -18,8 +18,10 @@
 				font-size: 1.2rem;
 			}
 			img {
-				width: 128px;
-				height: 128px;
+				background-color: white;
+				width: 64px;
+				height: 64px;
+				padding-right: 10px;
 			}
 		}
 		button {
@@ -29,6 +31,8 @@
 	.mid-section {
 		@extend %hr;
 		.info {
+			@include flex(space-between);
+			flex-wrap: wrap;
 			h4,
 			p {
 				color: get(white);

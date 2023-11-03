@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { SelectBox, Table } from "@/components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AddClient } from "@/components";
 import "./styles/client-form.scss";
 import { useAxios } from "@/hooks/useAxios";
+import { setClients } from "@/redux";
 
 const billState = { name: "", count: "", price: "" };
 export const AddBill = () => {
@@ -17,6 +18,7 @@ export const AddBill = () => {
 	const [total, setTotal] = useState(0);
 	const { refetch } = useAxios();
 	const { clients } = useSelector((state) => state.bills);
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -57,13 +59,17 @@ export const AddBill = () => {
 			if (isSubmitted && !error) {
 				navigate("/bills");
 			}
+			dispatch(setClients([...clients, { ...client, createdAt: new Date(), products }]));
 
 			alert(data?.success || data?.error);
 		} else {
 			const { name, address } = clients.find((c) => c.name === client.name);
 			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { name, address, products });
 
-			if (isSubmitted && !error) navigate("/bills");
+			if (isSubmitted && !error) {
+				navigate("/bills");
+				dispatch(setClients([...clients, { name, address, createdAt: new Date(), products }]));
+			}
 			alert(data?.success || data?.error);
 		}
 	};
