@@ -20,7 +20,7 @@ export const AddBill = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (!clients.length) return navigate("/bills");
+		if (!clients.length && !isFirstCreate) return navigate("/bills");
 		setOptions(() => Array.from(new Set(clients.map((client) => client.name))));
 	}, []);
 
