@@ -1,5 +1,5 @@
 // Slices
-export * from "./slices/controllers";
+export * from "./slices/bills";
 export * from "./slices/products";
 
 // Store

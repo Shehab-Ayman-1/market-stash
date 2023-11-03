@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import { corsOrigins, DBconnection } from "./configs/index.js";
-import { products } from "./routes/index.js";
+import { products, bills } from "./routes/index.js";
 
 // Configs
-const app = express();
+export const app = express();
 dotenv.config();
 app.use(cors(corsOrigins));
 
@@ -15,7 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // Routes
+app.use("/*", (req, res, next) => setTimeout(() => next(), 500));
 app.use("/api/products", products);
+app.use("/api/bills", bills);
 app.use("/*", (req, res) => res.status(400).json({ method: req.method, url: req.url, message: "Path Not Exist." }));
 
 // Mongo

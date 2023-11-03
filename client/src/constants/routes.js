@@ -5,11 +5,11 @@ const options = {
 
 export const routes = {
 	locale: {
-		baseURL: "http://localhost:5000/api/products",
+		baseURL: "http://localhost:5000/api",
 		...options,
 	},
 	remote: {
-		baseURL: "https://market-stash-server.vercel.app/api/products",
+		baseURL: "https://market-stash-server.vercel.app/api",
 		...options,
 	},
 };

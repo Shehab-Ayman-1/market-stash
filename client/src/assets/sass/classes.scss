@@ -82,6 +82,10 @@
 	width: 100%;
 }
 
+.m-auto {
+	margin: auto;
+}
+
 $vars: ("primary", "secondary", "white", "black", "dimWhite", "dimBlack", "lightWhite", "lightBlack");
 @each $var in $vars {
 	.text-#{$var} {

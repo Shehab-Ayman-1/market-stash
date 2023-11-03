@@ -12,3 +12,9 @@ export * from "./show";
 export * from "./show/buy";
 export * from "./show/edit";
 export * from "./show/sale";
+
+// Bills
+export * from "./bills";
+export * from "./bills/add-bill";
+export * from "./bills/show-bills";
+export * from "./bills/update-client";

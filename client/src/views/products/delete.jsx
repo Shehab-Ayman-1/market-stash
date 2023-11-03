@@ -48,7 +48,7 @@ export const DeleteProduct = () => {
 
 		if (process === "catagory") {
 			const query = `catagory=${catagory}`;
-			const { isSubmitted, error } = await refetch("delete", `/delete-catagory?${query}`);
+			const { isSubmitted, error } = await refetch("delete", `/products/delete-catagory?${query}`);
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");
@@ -56,7 +56,7 @@ export const DeleteProduct = () => {
 		}
 		if (process === "company") {
 			const query = `catagory=${catagory}&company=${company}`;
-			const { isSubmitted, error } = await refetch("delete", `/delete-company?${query}`);
+			const { isSubmitted, error } = await refetch("delete", `/products/delete-company?${query}`);
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");
@@ -64,7 +64,7 @@ export const DeleteProduct = () => {
 		}
 		if (process === "product") {
 			const query = `catagory=${catagory}&company=${company}&product=${product}`;
-			const { isSubmitted, error } = await refetch("delete", `/delete-product?${query}`);
+			const { isSubmitted, error } = await refetch("delete", `/products/delete-product?${query}`);
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");

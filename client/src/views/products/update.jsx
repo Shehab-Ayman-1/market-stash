@@ -53,7 +53,7 @@ export const UpdateProduct = () => {
 
 		if (process === "catagory") {
 			const body = { replace: { catagory: formData.oldCatagory }, to: { catagory: formData.catagory.trim() } };
-			const { isSubmitted, error } = await refetch("put", "/update-catagory", body);
+			const { isSubmitted, error } = await refetch("put", "/products/update-catagory", body);
 
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
@@ -62,7 +62,7 @@ export const UpdateProduct = () => {
 		}
 		if (process === "company") {
 			const body = { replace: { catagory: formData.oldCatagory, company: formData.oldCompany }, to: { img: formData.img, company: formData.company.trim() } };
-			const { isSubmitted, error } = await refetch("put", "/update-company", body);
+			const { isSubmitted, error } = await refetch("put", "/products/update-company", body);
 
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
@@ -71,7 +71,7 @@ export const UpdateProduct = () => {
 		}
 		if (process === "product") {
 			const body = { replace: { catagory: formData.oldCatagory, company: formData.oldCompany, product: formData.oldProduct }, to: { product: formData.product.trim() } };
-			const { isSubmitted, error } = await refetch("put", "/update-product", body);
+			const { isSubmitted, error } = await refetch("put", "/products/update-product", body);
 
 			if (isSubmitted && !error) {
 				dispatch(resetLists());

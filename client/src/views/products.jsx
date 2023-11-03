@@ -17,7 +17,7 @@ export const Products = () => {
 		if (tableLists.length) return;
 
 		(async () => {
-			const { data: tableLists, isSubmitted, error } = await refetch("get", `/get-table-lists`);
+			const { data: tableLists, isSubmitted, error } = await refetch("get", `/products/get-table-lists`);
 			if (isSubmitted && !error) dispatch(setTableLists(tableLists));
 		})();
 	}, []);

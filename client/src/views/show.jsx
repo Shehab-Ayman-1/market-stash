@@ -14,7 +14,7 @@ export const Show = () => {
 		if (company) return;
 
 		(async () => {
-			await refetch("get", `/get-company/${id}`);
+			await refetch("get", `/products/get-company/${id}`);
 		})();
 	}, [id]);
 

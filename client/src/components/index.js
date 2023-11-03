@@ -8,3 +8,6 @@ export * from "./home/company";
 
 // Table
 export * from "./table/table";
+
+// Bills
+export * from "./bills/add-client";

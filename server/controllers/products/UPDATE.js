@@ -1,4 +1,4 @@
-import { Products } from "../models/index.js";
+import { Products } from "../../models/index.js";
 
 export const UPDATE_CATAGORY = async (req, res) => {
 	try {

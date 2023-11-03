@@ -21,7 +21,7 @@ export const AddProduct = () => {
 		if (lists.length) return;
 
 		(async () => {
-			const { data: lists, isSubmitted, error } = await refetchLists("get", `/get-lists`);
+			const { data: lists, isSubmitted, error } = await refetchLists("get", `/products/get-lists`);
 			if (isSubmitted && !error) dispatch(setLists(lists));
 		})();
 	}, []);
@@ -63,21 +63,21 @@ export const AddProduct = () => {
 		const { process, ...data } = formData;
 
 		if (process === "catagory") {
-			const { isSubmitted, error } = await refetch("post", `/create-catagory`, { img: data.img, catagory: data.catagory, companies: data.products });
+			const { isSubmitted, error } = await refetch("post", `/products/create-catagory`, { img: data.img, catagory: data.catagory, companies: data.products });
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");
 			}
 		}
 		if (process === "company") {
-			const { isSubmitted, error } = await refetch("post", `/create-company`, { img: data.img, catagory: data.catagory, companies: data.products });
+			const { isSubmitted, error } = await refetch("post", `/products/create-company`, { img: data.img, catagory: data.catagory, companies: data.products });
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");
 			}
 		}
 		if (process === "product") {
-			const { isSubmitted, error } = await refetch("post", `/create-products`, { catagory: data.catagory, company: data.company, products: data.products });
+			const { isSubmitted, error } = await refetch("post", `/products/create-products`, { catagory: data.catagory, company: data.company, products: data.products });
 			if (isSubmitted && !error) {
 				dispatch(resetLists());
 				return navigate("/");

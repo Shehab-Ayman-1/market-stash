@@ -16,7 +16,7 @@ export const Home = () => {
 		if (homeProducts?.length) return;
 
 		(async () => {
-			const { data } = await refetch("get", "/get-home-companies?limit=6");
+			const { data } = await refetch("get", "/products/get-home-companies?limit=6");
 			dispatch(setHomeProducts(data));
 		})();
 	}, []);
@@ -25,7 +25,7 @@ export const Home = () => {
 		if (!fetchAll) return;
 
 		(async () => {
-			const { data } = await refetch("get", "/get-home-companies");
+			const { data } = await refetch("get", "/products/get-home-companies");
 			dispatch(setHomeProducts(data));
 		})();
 	}, [fetchAll]);

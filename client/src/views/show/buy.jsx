@@ -34,7 +34,7 @@ export const Buy = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const { isSubmitted, error } = await refetch("put", `/buy-products/${company?._id}/${product?._id}`, { ...formData, lastEdit: product?.lastEdits[0] });
+		const { isSubmitted, error } = await refetch("put", `/products/buy-products/${company?._id}/${product?._id}`, { ...formData, lastEdit: product?.lastEdits[0] });
 		if (isSubmitted && !error) return navigate("..", { state: company?._id });
 	};
 

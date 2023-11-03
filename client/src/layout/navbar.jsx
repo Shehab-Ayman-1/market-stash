@@ -20,6 +20,7 @@ export const Navbar = () => {
 			</Link>
 
 			<div className="icons">
+				<i className="fas fa-store-alt gradient-text" onClick={() => navigate("/bills")} />
 				<i className="fas fa-table gradient-text" onClick={() => navigate("/products")} />
 				<i className="fa fa-bars gradient-text" onClick={handleToggler} />
 			</div>

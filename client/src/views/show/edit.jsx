@@ -19,7 +19,7 @@ export const Edit = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const { isSubmitted, error } = await refetch("put", `/edit-price/${company?._id}/${product?._id}`, formData);
+		const { isSubmitted, error } = await refetch("put", `/products/edit-price/${company?._id}/${product?._id}`, formData);
 		if (isSubmitted && !error) return navigate("..", { state: company?._id });
 	};
 

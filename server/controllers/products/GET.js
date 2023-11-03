@@ -1,4 +1,4 @@
-import { Products } from "../models/index.js";
+import { Products } from "../../models/index.js";
 
 export const GET_HOME_COMPANIES = async (req, res) => {
 	try {

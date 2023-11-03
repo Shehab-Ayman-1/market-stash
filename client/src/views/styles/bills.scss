@@ -1,0 +1,45 @@
+@use "@/assets/sass/mixins" as *;
+
+.bills-section {
+	padding: 10px;
+	.add-client-btn {
+		margin: auto;
+		margin-bottom: 20px;
+	}
+	.clients {
+		.client {
+			@include flex(space-between);
+			.name {
+				padding: 10px;
+				h3,
+				p {
+					color: get(white);
+					padding-bottom: 15px;
+					margin-right: 5px;
+				}
+			}
+			.controllers {
+				@include flex(space-between);
+				gap: 10px;
+				margin-bottom: 10px;
+				i {
+					font-size: 1rem;
+				}
+				.fa-trash-alt {
+					color: crimson;
+				}
+				.fa-edit {
+					color: orange;
+				}
+				.fa-plus {
+					color: get(white);
+					margin-left: 10px;
+				}
+				.fa-eye {
+					color: get(white);
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+}

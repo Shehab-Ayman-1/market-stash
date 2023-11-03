@@ -1,0 +1,98 @@
+@use "@/assets/sass/mixins" as *;
+
+%hr {
+	padding-bottom: 20px;
+	margin-bottom: 40px;
+	border-bottom: 3px solid get(dimWhite);
+}
+
+.show-bill-section {
+	@include gradient-background("@/assets/images/home.png", (rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 100% 100%);
+	padding: 10px;
+	.head-section {
+		@extend %hr;
+		.info {
+			@include flex(space-between);
+			h3 {
+				color: get(white);
+				font-size: 1.2rem;
+			}
+			img {
+				width: 128px;
+				height: 128px;
+			}
+		}
+		button {
+			margin: 20px auto;
+		}
+	}
+	.mid-section {
+		@extend %hr;
+		.info {
+			h4,
+			p {
+				color: get(white);
+				line-height: 2;
+			}
+		}
+		.table-section {
+			margin-top: 20px;
+		}
+	}
+	.foot-section {
+		@include flex(space-between);
+		@extend %hr;
+		flex-wrap: wrap;
+		color: get(white);
+		div {
+			@include flex(start);
+			min-width: 300px;
+			margin-bottom: 20px;
+			gap: 10px;
+		}
+	}
+	.footer {
+		color: get(white);
+		text-align: center;
+		line-height: 2;
+	}
+}
+
+@media print {
+	.navbar-section {
+		display: none;
+	}
+	.app {
+		margin-top: 0;
+	}
+	.show-bill-section {
+		background-image: none;
+		.head-section {
+			.info h3 {
+				color: get(black);
+			}
+			.print-btn {
+				display: none;
+			}
+		}
+		.mid-section {
+			.info h4,
+			.info p {
+				color: get(dimBlack);
+			}
+			.table-section {
+				background-color: transparent;
+				box-shadow: none;
+				td {
+					color: get(black);
+				}
+			}
+		}
+		.foot-section {
+			color: get(black);
+		}
+		.footer {
+			color: get(black);
+		}
+	}
+}
