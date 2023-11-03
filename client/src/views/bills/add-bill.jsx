@@ -51,6 +51,7 @@ export const AddBill = () => {
 		if (!client.name) return alert("ادخل اسم العميل القديم");
 		if (!products.length) return alert("لا يمكن اضافه فاتورة فارغه");
 
+		// New User
 		if (state) {
 			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { ...client, products });
 			if (isSubmitted && !error) {
