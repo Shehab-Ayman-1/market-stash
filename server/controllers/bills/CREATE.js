@@ -3,25 +3,24 @@ import { Bills } from "../../models/index.js";
 export const CREATE_BILL = async (req, res) => {
 	try {
 		const body = req.body;
-		const { _id, createdAt } = await Bills.create(body);
 
+		// Keep The Last 50 Orders
+		const maxDocs = 49;
+		const bills = await Bills.find()
+			.sort({ createdAt: -1 })
+			.limit(maxDocs + 1);
+
+		if (bills.length > maxDocs) {
+			const lastCreatedAt = bills[maxDocs]?.createdAt;
+			if (lastCreatedAt) {
+				const { _id, createdAt } = await Bills.findOneAndReplace({ createdAt: lastCreatedAt }, body, { new: true });
+				console.log({ _id, createdAt });
+				return res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح", _id, createdAt });
+			}
+		}
+		const { _id, createdAt } = await Bills.create(body);
 		res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح", _id, createdAt });
 	} catch (error) {
 		res.status(404).json(`CREATE_BILL: ${error.message}`);
-	}
-};
-
-export const CREATE_CLIENT = async (req, res) => {
-	try {
-		const body = req.body;
-		if (!body.name || !body.address) return res.status(400).json({ error: "يجب ادخال اسم العميل والعنوان الخاص به" });
-
-		const isExists = await Bills.exists({ name: body.name });
-		if (isExists) return res.status(400).json({ error: "هذا المستخدم موجود بالفعل" });
-
-		const newOne = await Bills.create(body);
-		res.status(200).json({ success: "لقد تم اضافه العميل بنجاح", _id: newOne._id });
-	} catch (error) {
-		res.status(404).json(`CREATE_CLIENT: ${error.message}`);
 	}
 };

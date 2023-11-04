@@ -12,7 +12,9 @@ const schema = new Schema(
 			},
 		],
 	},
-	{ timestamps: true }
+	{
+		timestamps: true,
+	}
 );
 
 export const Bills = model("bills", schema);

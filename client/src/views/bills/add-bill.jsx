@@ -55,32 +55,32 @@ export const AddBill = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const newClient = state;
+
+		// Check Fields Validate
 		if (!client.name) return alert("ادخل اسم العميل القديم");
 		if (!products.length) return alert("لا يمكن اضافه فاتورة فارغه");
 
-		// New User
-		if (state) {
-			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { ...client, products });
-
-			if (isSubmitted && !error) {
-				const newClients = [{ ...client, _id: data?._id, createdAt: data?.createdAt || new Date(), products }, ...clients];
-				navigate("/bills");
-				dispatch(setClients(newClients));
-			}
-
-			alert(data?.success || data?.error);
+		// Make Body Is Ready To Send
+		let body = null;
+		if (newClient) {
+			const { name, address } = client;
+			body = { name, address };
 		} else {
-			const { _id, name, address } = clients.find((c) => c.name === client.name);
-			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { name, address, products });
-
-			if (isSubmitted && !error) {
-				const newClients = [{ _id, name, address, createdAt: data?.createdAt || new Date(), products }, ...clients];
-				navigate("/bills");
-				dispatch(setClients(newClients));
-			}
-
-			alert(data?.success || data?.error);
+			const { name, address } = clients.find((c) => c.name === client.name);
+			body = { name, address };
 		}
+
+		// Send POST Request
+		const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { name: body.name, address: body.address, products });
+
+		// Error
+		if (isSubmitted && error) return alert(error);
+
+		// Success
+		navigate("/bills");
+		dispatch(setClients([]));
+		alert(data?.success);
 	};
 
 	const tableOptions = {
