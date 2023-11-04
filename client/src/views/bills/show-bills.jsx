@@ -20,11 +20,10 @@ export const ShowBill = () => {
 		},
 	};
 
+	if (isSubmitted && error) return <Error message={error} />;
+	if (!isSubmitted && loading) return <Loading />;
 	return (
 		<section className="show-bill-section">
-			{!isSubmitted && loading && <Loading />}
-			{isSubmitted && error && <Error message={error} />}
-
 			<main className="main">
 				<div className="head-section">
 					<div className="info">

@@ -3,9 +3,9 @@ import { Bills } from "../../models/index.js";
 export const CREATE_BILL = async (req, res) => {
 	try {
 		const body = req.body;
-		await Bills.create(body);
+		const { _id, createdAt } = await Bills.create(body);
 
-		res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح" });
+		res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح", _id, createdAt });
 	} catch (error) {
 		res.status(404).json(`CREATE_BILL: ${error.message}`);
 	}

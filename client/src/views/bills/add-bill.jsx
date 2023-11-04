@@ -56,20 +56,24 @@ export const AddBill = () => {
 		// New User
 		if (state) {
 			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { ...client, products });
+
 			if (isSubmitted && !error) {
+				const newClients = [{ ...client, _id: data?._id, createdAt: data?.createdAt || new Date(), products }, ...clients];
 				navigate("/bills");
+				dispatch(setClients(newClients));
 			}
-			dispatch(setClients([...clients, { ...client, createdAt: new Date(), products }]));
 
 			alert(data?.success || data?.error);
 		} else {
-			const { name, address } = clients.find((c) => c.name === client.name);
+			const { _id, name, address } = clients.find((c) => c.name === client.name);
 			const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { name, address, products });
 
 			if (isSubmitted && !error) {
+				const newClients = [{ _id, name, address, createdAt: data?.createdAt || new Date(), products }, ...clients];
 				navigate("/bills");
-				dispatch(setClients([...clients, { name, address, createdAt: new Date(), products }]));
+				dispatch(setClients(newClients));
 			}
+
 			alert(data?.success || data?.error);
 		}
 	};
