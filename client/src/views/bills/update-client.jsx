@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "./styles/client-form.scss";
 
 export const UpdateClient = () => {
-	const { refetch } = useAxios();
-	const { clients } = useSelector((state) => state.bills);
 	const [client, setClient] = useState({ oldName: "", name: "", address: "" });
 	const [options, setOptions] = useState([]);
+
+	const { loading, refetch } = useAxios();
+	const { clients } = useSelector((state) => state.bills);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -41,8 +43,8 @@ export const UpdateClient = () => {
 				<SelectBox label="اسم العميل القديم" name="oldName" options={options} onChange={handleChange} />
 				<Input label="اسم العميل الجديد (اختياري)" name="name" handleChange={handleChange} />
 				<Input label="عنوان المحل (اختياري)" name="address" handleChange={handleChange} />
-				<button type="submit" className="btn m-auto">
-					تعديل
+				<button type="submit" className="btn m-auto" disabled={loading}>
+					{loading ? "تحميل..." : "تعديل"}
 				</button>
 			</form>
 		</section>

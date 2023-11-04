@@ -7,17 +7,22 @@ import "./styles/client-form.scss";
 import { useAxios } from "@/hooks/useAxios";
 import { setClients } from "@/redux";
 
-const billState = { name: "", count: "", price: "" };
+const productState = { name: "", count: "", price: "" };
 export const AddBill = () => {
 	const state = useLocation().state?.isFirstCreate;
-	const [isFirstCreate, setisFirstCreate] = useState(state);
-	const [products, setProducts] = useState([]);
-	const [bill, setBill] = useState(billState);
-	const [options, setOptions] = useState([]);
-	const [client, setClient] = useState({});
-	const [total, setTotal] = useState(0);
-	const { refetch } = useAxios();
+
+	const [isFirstCreate, setisFirstCreate] = useState(state); // come from bill.jsx
+	const [products, setProducts] = useState([]); // all exists product
+
+	const [client, setClient] = useState({}); // client info
+	const [product, setProduct] = useState(productState); // product underprocess
+
+	const [total, setTotal] = useState(0); // total bill price
+	const [options, setOptions] = useState([]); // selectBox options
+
+	const { loading, refetch } = useAxios();
 	const { clients } = useSelector((state) => state.bills);
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -33,15 +38,15 @@ export const AddBill = () => {
 	const handleChange = ({ target: { name, value } }) => {
 		if (name === "client.name") return setClient((c) => ({ ...c, name: value }));
 		if (name === "client.address") return setClient((c) => ({ ...c, address: value }));
-		setBill((f) => ({ ...f, [name]: value }));
+		setProduct((f) => ({ ...f, [name]: value }));
 	};
 
 	const saveNewField = () => {
-		const isFilled = Object.values(bill).every((value) => value);
+		const isFilled = Object.values(product).every((value) => value);
 		if (!isFilled) return alert("يجب ادخال الاسم, السعر, والعدد");
 
-		setProducts((b) => [...b, bill]);
-		setBill((b) => (b = billState));
+		setProducts((b) => [...b, product]);
+		setProduct((b) => (b = productState));
 	};
 
 	const deleteField = (i) => {
@@ -104,26 +109,26 @@ export const AddBill = () => {
 
 				<Table {...tableOptions}>
 					<tbody className="table-body">
-						{products?.map((bill, i) => (
+						{products?.map((product, i) => (
 							<tr key={i}>
 								<td onClick={() => deleteField(i)}>
 									<i className="far fa-trash-alt" style={{ color: "crimson" }} />
 								</td>
-								<td>{bill?.name}</td>
-								<td>{bill?.count}</td>
-								<td>{bill?.price}</td>
-								<td>{+bill?.count * +bill?.price}</td>
+								<td>{product?.name}</td>
+								<td>{product?.count}</td>
+								<td>{product?.price}</td>
+								<td>{+product?.count * +product?.price}</td>
 							</tr>
 						))}
 						<tr className="controllers">
 							<td colSpan={2}>
-								<input type="text" value={bill.name} name="name" onChange={handleChange} />
+								<input type="text" value={product.name} name="name" onChange={handleChange} />
 							</td>
 							<td>
-								<input type="number" value={bill.count} name="count" onChange={handleChange} />
+								<input type="number" value={product.count} name="count" min={0} onChange={handleChange} />
 							</td>
 							<td>
-								<input type="number" value={bill.price} name="price" onChange={handleChange} />
+								<input type="number" value={product.price} name="price" min={0} onChange={handleChange} />
 							</td>
 							<td onClick={saveNewField}>
 								<i className="fa fa-plus" />
@@ -134,8 +139,8 @@ export const AddBill = () => {
 
 				<p className="total">الاجمالي: {total} جنية</p>
 
-				<button type="submit" className="btn submit">
-					انشاء فاتورة
+				<button type="submit" className="btn submit" disabled={loading}>
+					{loading ? "تحميل......" : "انشاء فاتورة"}
 				</button>
 			</form>
 		</section>
