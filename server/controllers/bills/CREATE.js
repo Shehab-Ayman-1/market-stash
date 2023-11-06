@@ -14,10 +14,10 @@ export const CREATE_BILL = async (req, res) => {
 			const lastCreatedAt = bills[maxDocs]?.createdAt;
 			if (lastCreatedAt) {
 				const { _id, createdAt } = await Bills.findOneAndReplace({ createdAt: lastCreatedAt }, body, { new: true });
-				console.log({ _id, createdAt });
 				return res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح", _id, createdAt });
 			}
 		}
+
 		const { _id, createdAt } = await Bills.create(body);
 		res.status(200).json({ success: "لقد تم اضافه الفاتورة بنجاح", _id, createdAt });
 	} catch (error) {
