@@ -15,7 +15,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar-section">
 			<Link to="/" className="logo-section">
-				<img src={logo} className="fa-spin" alt="logo" />
+				<img src={logo} alt="logo" />
 				<h3 className="gradient-text">المخزن الرئيسي</h3>
 			</Link>
 

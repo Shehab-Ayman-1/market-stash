@@ -1,7 +1,6 @@
 @use "@/assets/sass/mixins" as *;
 
 .widget-section {
-	@include gradient-background("@/assets/images/edit.png", (rgba(black, 0.5), rgba(black, 0.9)));
 	min-height: 50vh;
 	max-width: 300px;
 	width: 100%;

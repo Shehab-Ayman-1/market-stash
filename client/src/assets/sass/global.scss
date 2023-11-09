@@ -27,7 +27,8 @@ body {
 }
 
 html {
-	@include gradient-background("@/assets/images/home.png", (rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), 100% 100%);
+	@include gradient-background("@/assets/images/logo.png", (rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 100% 100%, fixed);
+	background-color: black;
 	width: 100vw;
 	min-height: 100vh;
 	overflow-x: hidden;
