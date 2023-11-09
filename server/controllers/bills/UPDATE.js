@@ -25,3 +25,26 @@ export const UPDATE_BILL = async (req, res) => {
 		res.status(404).json(`UPDATE_BILL: ${error.message}`);
 	}
 };
+
+export const PAYMENT = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { value } = req.body;
+
+		const bill = await Bills.findById(id);
+		const total = bill.products.reduce((prev, cur) => prev + cur.price * cur.count, 0);
+
+		const updated = await Bills.updateOne(
+			{ _id: id },
+			{
+				$inc: { "payment.value": value },
+				$set: { "payment.finished": total <= value + bill.payment.value },
+			}
+		);
+		if (!updated.modifiedCount) return res.status(400).json({ error: "حدث خطأ ولم يتم دفع الفاتورة" });
+
+		res.status(200).json({ success: "لقد تم دفع المبلغ بنجاح" });
+	} catch (error) {
+		res.status(404).json(`PAYMENT: ${error.message}`);
+	}
+};

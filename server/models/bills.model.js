@@ -4,6 +4,10 @@ const schema = new Schema(
 	{
 		name: String,
 		address: String,
+		payment: {
+			finished: { type: Boolean, default: false },
+			value: { type: Number, default: 0 },
+		},
 		products: [
 			{
 				name: String,

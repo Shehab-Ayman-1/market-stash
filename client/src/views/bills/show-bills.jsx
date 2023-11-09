@@ -64,12 +64,12 @@ export const ShowBill = () => {
 						<h3>{bill?.totalPrices || 0} جنية</h3>
 					</div>
 					<div className="">
-						<h3 className="total">القيمة المضافة:</h3>
-						<h3>0%</h3>
+						<h3 className="total">تم سداد:</h3>
+						<h3>{bill?.payment.value} جنية</h3>
 					</div>
 					<div className="">
 						<h3 className="total">المبلغ الاجمالي:</h3>
-						<h3>{bill?.totalPrices || 0} جنية</h3>
+						<h3>{+bill?.totalPrices - +bill?.payment.value || 0} جنية</h3>
 					</div>
 				</div>
 

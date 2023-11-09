@@ -9,6 +9,14 @@
 	.clients {
 		.client {
 			@include flex(space-between);
+			position: relative;
+			.line-through {
+				@include absolute(tl, 50%, 50%);
+				@include translate;
+				background: red;
+				width: 100%;
+				height: 3px;
+			}
 			.name {
 				padding: 10px;
 				h3,
@@ -31,8 +39,8 @@
 				.fa-edit {
 					color: orange;
 				}
-				.fa-plus {
-					color: get(white);
+				.fa-money-bill-wave {
+					color: lightgreen;
 					margin-left: 10px;
 				}
 				.fa-eye {

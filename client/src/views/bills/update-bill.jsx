@@ -79,7 +79,7 @@ export const UpdateBill = () => {
 						<h3>{client.name}</h3>
 						<p>{client.address}</p>
 					</div>
-					<button type="button" className="btn" onClick={() => setUpdatedProduct((p) => ({ ...p, index: products.length }))}>
+					<button type="button" className="btn" onClick={() => setUpdatedProduct(() => ({ ...productState, index: products.length }))}>
 						اضافة منتج جديد
 					</button>
 				</div>
@@ -87,9 +87,7 @@ export const UpdateBill = () => {
 				<Table {...tableOptions}>
 					<tbody className="table-body">
 						<tr className={`controllers ${updatedProduct.index === null ? "hide-display" : ""}`}>
-							<td onClick={updatedField}>
-								<i className="fa fa-plus" />
-							</td>
+							<td onClick={updatedField}>{updatedProduct.index === products.length ? <i className="fa fa-plus" /> : <i className="fa fa-edit" />}</td>
 							<td>
 								<input type="text" value={updatedProduct?.name} name="name" onChange={handleChange} />
 							</td>
