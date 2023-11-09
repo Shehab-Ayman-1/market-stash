@@ -1,5 +1,5 @@
 import express from "express";
-import { GET_BILLS, GET_BILL, CREATE_BILL, UPDATE_CLIENT, DELETE_BILL } from "../controllers/index.js";
+import { GET_BILLS, GET_BILL, CREATE_BILL, UPDATE_BILL, UPDATE_CLIENT, DELETE_BILL } from "../controllers/index.js";
 
 export const router = express.Router();
 
@@ -11,6 +11,7 @@ router.get("/get-bill/:id", GET_BILL);
 router.post("/create-bill", CREATE_BILL);
 
 // UPDATE
+router.put("/update-bill/:id", UPDATE_BILL);
 router.put("/update-client", UPDATE_CLIENT);
 
 // DELETE

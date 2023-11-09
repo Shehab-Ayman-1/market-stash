@@ -49,7 +49,7 @@ export const Bills = () => {
 				<Input label="بحث..." type="search" name="search" handleChange={searchbarList} />
 			</div>
 
-			<div className="flex-between">
+			<div className="flex-between gap-5">
 				<button className="btn add-client-btn" onClick={() => navigate("/bills/add-bill", { state: { isFirstCreate: true } })}>
 					اضافه مستخدم
 				</button>
@@ -67,6 +67,7 @@ export const Bills = () => {
 						<div className="name flex-between">
 							<div className="controllers" style={{ pointerEvents: dLoading ? "none" : "auto" }}>
 								<i className="far fa-trash-alt" onClick={() => handleDeleteClient(client._id)} />
+								<i className="fas fa-edit" onClick={() => navigate("/bills/edit-bill", { state: { id: client._id } })} />
 							</div>
 							<p>{new Date(client.createdAt).toLocaleDateString()}</p>
 							<h3>{client.name}</h3>

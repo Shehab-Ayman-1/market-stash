@@ -11,3 +11,17 @@ export const UPDATE_CLIENT = async (req, res) => {
 		res.status(404).json(`UPDATE_CLIENT: ${error.message}`);
 	}
 };
+
+export const UPDATE_BILL = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { products } = req.body;
+
+		const updated = await Bills.updateOne({ _id: id }, { products });
+		if (!updated.modifiedCount) return res.status(400).json({ error: "حدث خطأ ، ولم يتم تعديل الفاتورة" });
+
+		res.status(200).json({ success: "لقد تم تعديل المنتج بنجاح" });
+	} catch (error) {
+		res.status(404).json(`UPDATE_BILL: ${error.message}`);
+	}
+};

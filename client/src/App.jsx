@@ -3,7 +3,7 @@ import { Wrapper, _404 } from "@/layout";
 import { Home } from "@/views";
 import { Products, AddProduct, UpdateProduct, DeleteProduct } from "@/views";
 import { Show, Buy, Edit, Sale } from "@/views";
-import { Bills, AddBill, ShowBill, UpdateClient } from "@/views";
+import { Bills, AddBill, ShowBill, UpdateBill, UpdateClient } from "@/views";
 
 export const App = () => {
 	return (
@@ -31,6 +31,7 @@ export const App = () => {
 				<Route index element={<Bills />} />
 				<Route path="show-bills" element={<ShowBill />} />
 				<Route path="add-bill" element={<AddBill />} />
+				<Route path="edit-bill" element={<UpdateBill />} />
 				<Route path="edit-client" element={<UpdateClient />} />
 			</Route>
 		</Routes>

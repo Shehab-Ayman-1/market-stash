@@ -3,9 +3,9 @@ import { SelectBox, Table } from "@/components";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AddClient } from "@/components";
-import "./styles/client-form.scss";
 import { useAxios } from "@/hooks/useAxios";
 import { setClients } from "@/redux";
+import "./styles/client-form.scss";
 
 const productState = { name: "", count: "", price: "" };
 export const AddBill = () => {
@@ -112,7 +112,7 @@ export const AddBill = () => {
 						{products?.map((product, i) => (
 							<tr key={i}>
 								<td onClick={() => deleteField(i)}>
-									<i className="far fa-trash-alt" style={{ color: "crimson" }} />
+									<i className="far fa-trash-alt" />
 								</td>
 								<td>{product?.name}</td>
 								<td>{product?.count}</td>

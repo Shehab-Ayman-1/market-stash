@@ -18,3 +18,4 @@ export * from "./bills";
 export * from "./bills/add-bill";
 export * from "./bills/show-bills";
 export * from "./bills/update-client";
+export * from "./bills/update-bill";
