@@ -58,7 +58,7 @@ export const AddBill = () => {
 		const newClient = state;
 
 		// Check Fields Validate
-		if (!client.name) return alert("ادخل اسم العميل القديم");
+		if (!client.name) return alert("ادخل اسم العميل");
 		if (!products.length) return alert("لا يمكن اضافه فاتورة فارغه");
 
 		// Make Body Is Ready To Send
@@ -103,7 +103,7 @@ export const AddBill = () => {
 							<p>{client.address}</p>
 						</div>
 					) : (
-						<SelectBox label="اسم العميل القديم" name="client.name" options={options} onChange={handleChange} />
+						<SelectBox label="اسم العميل" name="client.name" options={options} onChange={handleChange} />
 					)}
 				</div>
 
