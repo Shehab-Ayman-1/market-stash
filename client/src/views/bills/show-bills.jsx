@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Table } from "@/components";
-import { logo } from "@/assets";
+import { printLogo } from "@/assets";
 import { useAxios } from "@/hooks/useAxios";
 import { Error, Loading } from "@/layout";
 import "./styles/show-bill.scss";
@@ -28,7 +28,7 @@ export const ShowBill = () => {
 				<div className="head-section">
 					<div className="info">
 						<h3>ابو رقية للتجارة والتوزيع</h3>
-						<img src={logo} alt="logo" />
+						<img src={printLogo} alt="printLogo" />
 					</div>
 					<button className="btn print-btn" onClick={() => window.print()}>
 						طباعة الفاتورة
