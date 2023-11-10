@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AddClient } from "@/components";
 import { useAxios } from "@/hooks/useAxios";
 import { setClients } from "@/redux";
-import "./styles/client-form.scss";
+import "./styles/form-widget.scss";
 
 const productState = { name: "", count: "", price: "" };
 export const AddBill = () => {

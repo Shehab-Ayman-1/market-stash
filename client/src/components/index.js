@@ -12,3 +12,6 @@ export * from "./table/table";
 // Bills
 export * from "./bills/add-client";
 export * from "./bills/pay-widget";
+
+// show
+export * from "./show/last-edits";

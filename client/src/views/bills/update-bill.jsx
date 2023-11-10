@@ -3,7 +3,7 @@ import { Table } from "@/components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAxios } from "@/hooks/useAxios";
 import { Error, Loading } from "@/layout";
-import "./styles/client-form.scss";
+import "./styles/form-widget.scss";
 
 const productState = { isUpdated: false, index: null, name: "", count: "", price: "" };
 export const UpdateBill = () => {

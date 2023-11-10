@@ -1,8 +1,7 @@
 @use "@/assets/sass/mixins" as *;
 
 %hr {
-	padding-bottom: 20px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	border-bottom: 3px solid get(dimWhite);
 }
 
@@ -40,13 +39,14 @@
 		}
 		.table-section {
 			margin-top: 20px;
+			width: 100%;
 		}
 	}
 	.foot-section {
 		@include flex(space-between);
 		@extend %hr;
-		flex-wrap: wrap;
 		color: get(white);
+		flex-wrap: wrap;
 		div {
 			@include flex(start);
 			min-width: 300px;
@@ -71,8 +71,15 @@
 	.show-bill-section {
 		background-image: none;
 		.head-section {
-			.info h3 {
-				color: get(black);
+			.info {
+				h3 {
+					color: get(black);
+					font-size: 1.5rem;
+				}
+				img {
+					width: 128px;
+					height: 128px;
+				}
 			}
 			.print-btn {
 				display: none;
@@ -82,20 +89,28 @@
 			.info h4,
 			.info p {
 				color: get(dimBlack);
+				font-size: 1.5rem;
 			}
 			.table-section {
 				background-color: transparent;
 				box-shadow: none;
 				td {
 					color: get(black);
+					font-size: 1.5rem;
+					padding-block: 10px;
+				}
+				th {
+					font-size: 1.5rem;
 				}
 			}
 		}
 		.foot-section {
 			color: get(black);
+			font-size: 1.5rem;
 		}
 		.footer {
 			color: get(black);
+			font-size: 1.2rem;
 		}
 	}
 }

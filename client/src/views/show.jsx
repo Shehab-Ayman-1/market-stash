@@ -12,10 +12,7 @@ export const Show = () => {
 
 	useEffect(() => {
 		if (company) return;
-
-		(async () => {
-			await refetch("get", `/products/get-company/${id}`);
-		})();
+		(async () => await refetch("get", `/products/get-company/${id}`))();
 	}, [id]);
 
 	const tableOptions = {

@@ -3,7 +3,7 @@ import { Input, SelectBox } from "@/components";
 import { useAxios } from "@/hooks/useAxios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./styles/client-form.scss";
+import "./styles/form-widget.scss";
 
 export const UpdateClient = () => {
 	const [client, setClient] = useState({ oldName: "", name: "", address: "" });

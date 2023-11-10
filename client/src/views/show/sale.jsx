@@ -1,25 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Fragment, useState } from "react";
-import { Input } from "@/components";
-import "./styles/widget.scss";
+import { useState } from "react";
+import { LastEdits, Input } from "@/components";
 import { useAxios } from "@/hooks/useAxios";
 import { Alert, Loading } from "@/layout";
-
-const LastEdits = ({ index, lastEdits, sale }) => {
-	const date = new Date(lastEdits[index]?.date);
-	const count = Math.abs(lastEdits[index]?.count);
-
-	return (
-		<Fragment>
-			<span className="count">{count || ""}</span>
-
-			<div className="date">
-				<span>{date.toLocaleDateString() || ""}</span>
-				<span>{date.toLocaleTimeString() || ""}</span>
-			</div>
-		</Fragment>
-	);
-};
+import "./styles/widget.scss";
 
 const formState = { count: 0 };
 export const Sale = () => {
@@ -51,23 +35,16 @@ export const Sale = () => {
 			{isSubmitted && !error && <Alert message={data?.success} success />}
 
 			<div className="last-edits">
-				{product?.lastEdits[0]?.count > 0 ? (
-					<div className="buy">
-						<LastEdits index={0} lastEdits={product?.lastEdits} />
-					</div>
-				) : (
-					<div className="sale">
-						<LastEdits index={0} lastEdits={product?.lastEdits} sale />
-					</div>
-				)}
-				{product?.lastEdits[1]?.count > 0 ? (
-					<div className="buy">
-						<LastEdits index={1} lastEdits={product?.lastEdits} />
-					</div>
-				) : (
-					<div className="sale">
-						<LastEdits index={1} lastEdits={product?.lastEdits} sale />
-					</div>
+				{product?.lastEdits.map(({ count }, i) =>
+					count > 0 ? (
+						<div className="buy" key={i}>
+							<LastEdits index={i} lastEdits={product?.lastEdits} />
+						</div>
+					) : (
+						<div className="sale" key={i}>
+							<LastEdits index={i} lastEdits={product?.lastEdits} />
+						</div>
+					)
 				)}
 			</div>
 
