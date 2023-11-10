@@ -12,7 +12,7 @@ export const Error = ({ message }) => {
 				<h3>Oh My God!</h3>
 				<p>{message}</p>
 				<p>{pathname}</p>
-				<p>{typeof state === "string" ? state : state.join("")}</p>
+				<p>{state}</p>
 			</div>
 		</div>
 	);
