@@ -1,14 +1,15 @@
 @use "@/assets/sass/mixins" as *;
 
-%hr {
-	margin-bottom: 20px;
+.hr {
+	margin-block: 20px;
 	border-bottom: 3px solid get(dimWhite);
 }
 
 .show-bill-section {
 	padding: 10px;
+	margin: auto;
+	border-radius: 10px;
 	.head-section {
-		@extend %hr;
 		.info {
 			@include flex(space-between);
 			h3 {
@@ -16,7 +17,6 @@
 				font-size: 1.2rem;
 			}
 			img {
-				background-color: white;
 				width: 64px;
 				height: 64px;
 				padding-right: 10px;
@@ -27,37 +27,49 @@
 		}
 	}
 	.mid-section {
-		@extend %hr;
 		.info {
 			@include flex(space-between);
+			min-width: 300px;
 			flex-wrap: wrap;
-			h4,
-			p {
+			h4 {
 				color: get(white);
-				line-height: 2;
+			}
+			p {
+				color: aliceblue;
 			}
 		}
 		.table-section {
-			margin-top: 20px;
 			width: 100%;
+			padding: 0;
+			margin-block: 30px;
+			box-shadow: none;
 		}
 	}
 	.foot-section {
 		@include flex(space-between);
-		@extend %hr;
 		color: get(white);
 		flex-wrap: wrap;
-		div {
-			@include flex(start);
+		.info {
+			@include flex(space-between);
 			min-width: 300px;
-			margin-bottom: 20px;
-			gap: 10px;
+			flex-wrap: wrap;
+			h4 {
+				color: get(white);
+			}
+			p {
+				color: aliceblue;
+			}
 		}
 	}
 	.footer {
-		color: get(white);
 		text-align: center;
 		line-height: 2;
+		h4 {
+			color: get(white);
+		}
+		p {
+			color: aliceblue;
+		}
 	}
 }
 
@@ -86,10 +98,12 @@
 			}
 		}
 		.mid-section {
-			.info h4,
-			.info p {
-				color: get(dimBlack);
-				font-size: 1.5rem;
+			.info {
+				h4,
+				p {
+					color: get(dimBlack);
+					font-size: 1.5rem;
+				}
 			}
 			.table-section {
 				background-color: transparent;
@@ -109,8 +123,11 @@
 			font-size: 1.5rem;
 		}
 		.footer {
-			color: get(black);
-			font-size: 1.2rem;
+			h4,
+			p {
+				color: get(dimBlack);
+				font-size: 1.5rem;
+			}
 		}
 	}
 }

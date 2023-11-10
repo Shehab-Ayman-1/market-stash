@@ -70,14 +70,14 @@ export const UpdateBill = () => {
 	if (loading) return <Loading />;
 
 	return (
-		<section className="form-widget add-bill">
+		<section className="form-widget update-bill">
 			<h3 className="title gradient-text">تعديل فاتورة</h3>
 
 			<form className="form" onSubmit={handleSubmit}>
 				<div className="info">
 					<div className="field">
-						<h3>{client.name}</h3>
-						<p>{client.address}</p>
+						<h3>العميل: {client.name}</h3>
+						<p>العنوان: {client.address}</p>
 					</div>
 					<button type="button" className="btn" onClick={() => setUpdatedProduct(() => ({ ...productState, index: products.length }))}>
 						اضافة منتج جديد

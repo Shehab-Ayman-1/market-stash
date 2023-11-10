@@ -35,12 +35,24 @@ export const ShowBill = () => {
 					</button>
 				</div>
 
+				<hr className="hr" />
+
 				<div className="mid-section">
 					<div className="info">
-						<h4>{bill?.name}</h4>
-						<p>{bill?.address}</p>
-						<p>{new Date(bill?.createdAt).toLocaleDateString()}</p>
+						<div className="flex-start gap-10">
+							<h4>الاسم: </h4>
+							<p>{bill?.name}</p>
+						</div>
+						<div className="flex-start gap-10">
+							<h4>العنوان: </h4>
+							<p>{bill?.address}</p>
+						</div>
+						<div className="flex-start gap-10">
+							<h4>التاريخ: </h4>
+							<p>{new Date(bill?.createdAt).toLocaleDateString()}</p>
+						</div>
 					</div>
+
 					<div className="">
 						<Table {...tableOptions}>
 							<tbody className="table-body">
@@ -59,22 +71,24 @@ export const ShowBill = () => {
 				</div>
 
 				<div className="foot-section">
-					<div className="">
-						<h3 className="total">سعر الفاتورة:</h3>
-						<h3>{bill?.totalPrices || 0} جنية</h3>
+					<div className="flex-between gap-10">
+						<h4 className="total">سعر الفاتورة:</h4>
+						<p>{bill?.totalPrices || 0} جنية</p>
 					</div>
-					<div className="">
-						<h3 className="total">تم سداد:</h3>
-						<h3>{bill?.payment.value} جنية</h3>
+					<div className="flex-between gap-10">
+						<h4 className="total">تم سداد:</h4>
+						<p>{bill?.payment.value || 0} جنية</p>
 					</div>
-					<div className="">
-						<h3 className="total">المبلغ الاجمالي:</h3>
-						<h3>{+bill?.totalPrices - +bill?.payment.value || 0} جنية</h3>
+					<div className="flex-between gap-10">
+						<h4 className="total">المبلغ الاجمالي:</h4>
+						<p>{+bill?.totalPrices - +bill?.payment.value || 0} جنية</p>
 					</div>
 				</div>
 
+				<hr className="hr" />
+
 				<div className="footer">
-					<h3>ابو رقية للتجارة والتوزيع</h3>
+					<h4>ابو رقية للتجارة والتوزيع</h4>
 					<p>الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس</p>
 				</div>
 			</main>
