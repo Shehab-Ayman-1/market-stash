@@ -20,7 +20,7 @@ export const Edit = () => {
 		event.preventDefault();
 
 		const { isSubmitted, error } = await refetch("put", `/products/edit-price/${company?._id}/${product?._id}`, formData);
-		if (isSubmitted && !error) return navigate("..", { state: company?._id });
+		if (isSubmitted && !error) return navigate("/show", { state: company?._id });
 	};
 
 	return (

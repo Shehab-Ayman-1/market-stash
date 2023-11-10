@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Table } from "@/components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAxios } from "@/hooks/useAxios";
 import { Error, Loading } from "@/layout";
 import "./styles/form-widget.scss";
 
 const productState = { isUpdated: false, index: null, name: "", count: "", price: "" };
 export const UpdateBill = () => {
-	const { id } = useLocation().state;
+	const { id } = useParams();
 
 	const [client, setClient] = useState({ name: "", address: "" });
 	const [updatedProduct, setUpdatedProduct] = useState(productState);

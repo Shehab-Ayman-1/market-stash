@@ -70,14 +70,14 @@ export const Bills = () => {
 						<div className="right-section">
 							<div className="icons" style={{ pointerEvents: dLoading ? "none" : "auto" }}>
 								<i className="far fa-trash-alt" onClick={() => handleDeleteClient(client._id)} />
-								<i className="fas fa-edit" onClick={() => navigate("/bills/edit-bill", { state: { id: client._id } })} />
+								<i className="fas fa-edit" onClick={() => navigate(`/bills/edit-bill/${client._id}`)} />
 								<i className="fas fa-money-bill-wave" onClick={() => setPay({ state: true, id: client._id, payment: client.payment })} />
 							</div>
 							<p className="date">{new Date(client.createdAt).toLocaleDateString()}</p>
 							<h3 className="name">{client.name}</h3>
 						</div>
 
-						<i className="fas fa-eye" onClick={() => navigate("/bills/show-bills", { state: { id: client._id } })} />
+						<i className="fas fa-eye" onClick={() => navigate(`/bills/show-bills/${client._id}`)} />
 
 						{client.payment.finished && <div className="line-through" />}
 					</div>

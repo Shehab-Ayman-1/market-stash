@@ -29,9 +29,9 @@ export const App = () => {
 
 			<Route path="/bills" element={<Wrapper />}>
 				<Route index element={<Bills />} />
-				<Route path="show-bills" element={<ShowBill />} />
+				<Route path="show-bills/:id" element={<ShowBill />} />
 				<Route path="add-bill" element={<AddBill />} />
-				<Route path="edit-bill" element={<UpdateBill />} />
+				<Route path="edit-bill/:id" element={<UpdateBill />} />
 				<Route path="edit-client" element={<UpdateClient />} />
 			</Route>
 		</Routes>
