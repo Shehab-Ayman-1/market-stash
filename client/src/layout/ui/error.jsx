@@ -3,7 +3,6 @@ import "./styles/error.scss";
 
 export const Error = ({ message }) => {
 	const { pathname, state } = useLocation();
-
 	return (
 		<div className="error-section">
 			<div className="top">

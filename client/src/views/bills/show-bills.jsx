@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Table } from "@/components";
 import { printLogo } from "@/assets";
@@ -8,7 +8,7 @@ import "./styles/show-bill.scss";
 
 export const ShowBill = () => {
 	const { data: bill, loading, error, isSubmitted, refetch } = useAxios();
-	const { id } = useLocation().state;
+	const { id } = useParams();
 
 	useEffect(() => {
 		(async () => await refetch("get", `/bills/get-bill/${id}`))();
