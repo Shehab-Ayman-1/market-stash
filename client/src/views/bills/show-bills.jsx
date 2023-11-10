@@ -80,7 +80,7 @@ export const ShowBill = () => {
 						<p>{bill?.payment.value || 0} جنية</p>
 					</div>
 					<div className="flex-between gap-10">
-						<h4 className="total">المبلغ الاجمالي:</h4>
+						<h4 className="total">المبلغ المتبقي:</h4>
 						<p>{+bill?.totalPrices - +bill?.payment.value || 0} جنية</p>
 					</div>
 				</div>
