@@ -31,7 +31,7 @@ export const ShowBill = () => {
 						<img src={printLogo} alt="printLogo" />
 					</div>
 					<button className="btn print-btn" onClick={() => window.print()}>
-						طباعة الفاتورة
+						طباعه <i className="far fa-file-alt" />
 					</button>
 				</div>
 
