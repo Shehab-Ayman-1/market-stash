@@ -1,7 +1,7 @@
 // Components
-export * from "./components/loading";
-export * from "./components/error";
-export * from "./components/alert";
+export * from "./ui/loading";
+export * from "./ui/error";
+export * from "./ui/alert";
 
 // Layouts
 export * from "./navbar";

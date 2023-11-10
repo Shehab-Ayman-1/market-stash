@@ -1,6 +1,9 @@
+import { useLocation } from "react-router-dom";
 import "./styles/error.scss";
 
 export const Error = ({ message }) => {
+	const { pathname, state } = useLocation();
+
 	return (
 		<div className="error-section">
 			<div className="top">
@@ -9,6 +12,8 @@ export const Error = ({ message }) => {
 			<div className="bottom">
 				<h3>Oh My God!</h3>
 				<p>{message}</p>
+				<p>{pathname}</p>
+				<p>{typeof state === "string" ? state : state.join("")}</p>
 			</div>
 		</div>
 	);
