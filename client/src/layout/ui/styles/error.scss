@@ -2,8 +2,9 @@
 
 .error-section {
 	background-color: rgba(red, 0.5);
-	width: 300px;
-	margin: auto;
+	min-width: 300px;
+	width: fit-content;
+	margin: 100px auto;
 	border-radius: 20px;
 	box-shadow: get(shadow);
 	.top {
@@ -17,9 +18,10 @@
 	.bottom {
 		color: get(white);
 		min-height: 150px;
-		text-align: center;
+		padding: 20px;
 		h3 {
 			margin-top: 10px;
+			text-align: center;
 		}
 		p {
 			color: get(white);
