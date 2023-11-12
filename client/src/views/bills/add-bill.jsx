@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { SelectBox, Table } from "@/components";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AddClient } from "@/components";
+import { Alert } from "@/layout";
+import { SelectBox, Table, AddClient } from "@/components";
 import { useAxios } from "@/hooks/useAxios";
 import { setClients } from "@/redux";
 import "./styles/form-widget.scss";
@@ -20,7 +20,7 @@ export const AddBill = () => {
 	const [total, setTotal] = useState(0); // total bill price
 	const [options, setOptions] = useState([]); // selectBox options
 
-	const { loading, refetch } = useAxios();
+	const { data, loading, error, isSubmitted, refetch } = useAxios();
 	const { clients } = useSelector((state) => state.bills);
 
 	const dispatch = useDispatch();
@@ -72,15 +72,13 @@ export const AddBill = () => {
 		}
 
 		// Send POST Request
-		const { data, isSubmitted, error } = await refetch("post", "/bills/create-bill", { name: body.name, address: body.address, products });
-
-		// Error
-		if (isSubmitted && error) return alert(error);
+		const { isSubmitted, error } = await refetch("post", "/bills/create-bill", { name: body.name, address: body.address, products });
 
 		// Success
-		navigate("/bills");
-		dispatch(setClients([]));
-		alert(data?.success);
+		if (isSubmitted && !error) {
+			dispatch(setClients([]));
+			setTimeout(() => navigate("/bills"), 2000);
+		}
 	};
 
 	const tableOptions = {
@@ -94,6 +92,9 @@ export const AddBill = () => {
 	return (
 		<section className="form-widget add-bill">
 			<h3 className="title gradient-text">عمل فاتورة</h3>
+
+			{isSubmitted && error && <Alert error message={error} />}
+			{isSubmitted && !error && <Alert success message={data.success} />}
 
 			<form className="form" onSubmit={handleSubmit}>
 				<div className="info">

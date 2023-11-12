@@ -14,15 +14,15 @@ export const Alert = ({ message, success, error }) => {
 		<div className={`alert-section ${show ? "" : "hide-display"}`}>
 			{success && (
 				<div className="success">
-					<p>{message}</p>
 					<i className="far fa-check-square" />
+					<p>{message}</p>
 				</div>
 			)}
 
 			{error && (
 				<div className="error">
-					<p>{message}</p>
 					<i className="fa fa-times" />
+					<p>{message}</p>
 				</div>
 			)}
 		</div>
