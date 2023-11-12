@@ -27,7 +27,7 @@ export const PayWidget = ({ pay, setPay }) => {
 				<i className="fa fa-times" onClick={() => setPay((p) => ({ state: false, payment: 0 }))} />
 			</div>
 			<div className="">
-				<Input type="number" label={`المبلغ المدفوع مسبقاً - - - ${pay?.payment?.value + " جنية" || ""}`} placeholder="المبلغ..." min={0} required handleChange={handleChange} />
+				<Input type="number" label={`المبلغ المدفوع مسبقاً - - - ${pay?.payment?.value + " جنية" || ""}`} placeholder="المبلغ..." min={0} required onChange={handleChange} />
 				<button type="submit" className="btn">
 					تاكيد الدفع
 				</button>

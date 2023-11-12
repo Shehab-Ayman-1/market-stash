@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAxios } from "@/hooks/useAxios";
 import { Alert, Loading } from "@/layout";
-import { Input, PayWidget } from "@/components";
+import { billsDropdown } from "@/constants";
+import { Dropdown, Input, PayWidget } from "@/components";
 import { useDispatch, useSelector } from "react-redux";
 import { setClients, deleteClient } from "@/redux";
 import "./styles/bills.scss";
@@ -37,35 +38,34 @@ export const Bills = () => {
 		const confirm = window.confirm("هل انت متاكد من حذف كل الفواتير السابقة لهذا العميل ؟");
 		if (!confirm) return;
 
-		const { data, isSubmitted, error } = await dRefetch("delete", `/bills/delete-bill/${id}`);
-		if (isSubmitted && !error) dispatch(deleteClient(id));
-		alert(data?.success || data?.error);
+		const { isSubmitted, error } = await dRefetch("delete", `/bills/delete-bill/${id}`);
+		if (isSubmitted && !error) {
+			dispatch(deleteClient(id));
+		}
 	};
 
 	if (!isSubmitted && loading) return <Loading />;
 
 	return (
 		<section className="bills-section">
-			{error || (dError && <Alert error message={error || dError} />)}
+			{error && <Alert error message={error} />}
+			{dError && <Alert error message={dError} />}
+
 			{dIsSubmitted && !dError && <Alert success message={dData.success} />}
-			{!isSubmitted && loading && <Loading />}
+			{dIsSubmitted && dError && <Alert error message={dError} />}
 
 			{pay.state && <PayWidget pay={pay} setPay={setPay} />}
 
 			<div className="searchbar">
-				<Input label="بحث..." type="search" name="search" handleChange={searchbarList} />
-			</div>
-
-			<div className="flex-between gap-5">
-				<button className="btn add-client-btn" onClick={() => navigate("/bills/add-bill", { state: { isFirstCreate: true } })}>
-					اضافه مستخدم
-				</button>
-				<button className="btn add-client-btn" onClick={() => navigate("/bills/edit-client")}>
-					تعديل مستخدم
-				</button>
-				<button className="btn add-client-btn" onClick={() => navigate("/bills/add-bill")}>
-					اضافه فاتورة
-				</button>
+				<Input label="بحث..." type="search" name="search" onChange={searchbarList} />
+				<Dropdown icon="fas fa-ellipsis-v" autoClosable>
+					{billsDropdown.map(({ name, icon, path }, i) => (
+						<Link to={{ pathname: path, hash: "isFirstCreate" }} className={`dropdown-item ${i + 1 === billsDropdown.length ? "last-item" : ""}`} key={i}>
+							<i className={`${icon} gradient-text icon`} />
+							<p className="content">{name}</p>
+						</Link>
+					))}
+				</Dropdown>
 			</div>
 
 			<div className="clients">

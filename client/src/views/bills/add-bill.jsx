@@ -9,9 +9,9 @@ import "./styles/form-widget.scss";
 
 const productState = { name: "", count: "", price: "" };
 export const AddBill = () => {
-	const state = useLocation().state?.isFirstCreate;
+	const state = useLocation().hash;
 
-	const [isFirstCreate, setisFirstCreate] = useState(state); // come from bill.jsx
+	const [isFirstCreate, setisFirstCreate] = useState(state === "#isFirstCreate"); // come from bill.jsx
 	const [products, setProducts] = useState([]); // all exists product
 
 	const [client, setClient] = useState({}); // client info

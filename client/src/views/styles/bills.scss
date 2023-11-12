@@ -2,9 +2,11 @@
 
 .bills-section {
 	padding: 10px;
-	.add-client-btn {
-		margin: auto;
-		margin-bottom: 20px;
+	.searchbar {
+		@include flex(space-between);
+		.field {
+			width: 100%;
+		}
 	}
 	.clients {
 		.client {

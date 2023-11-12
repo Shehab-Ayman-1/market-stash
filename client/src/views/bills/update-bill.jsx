@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Table } from "@/components";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAxios } from "@/hooks/useAxios";
-import { Error, Loading } from "@/layout";
+import { Alert, Error, Loading } from "@/layout";
 import "./styles/form-widget.scss";
 
 const productState = { isUpdated: false, index: null, name: "", count: "", price: "" };
@@ -14,7 +14,7 @@ export const UpdateBill = () => {
 	const [products, setProducts] = useState([]);
 
 	const { data, loading, error, isSubmitted } = useAxios("get", `/bills/get-bill/${id}`);
-	const { refetch } = useAxios();
+	const { data: message, loading: mLoading, error: mError, isSubmitted: mIsSubmitted, refetch } = useAxios();
 
 	const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export const UpdateBill = () => {
 	};
 
 	const openUpdateField = (index, name) => {
-		setUpdatedProduct((p) => ({ ...productState, isUpdated: true, index, name }));
+		setUpdatedProduct((p) => ({ ...productState, index, name }));
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
@@ -50,14 +50,15 @@ export const UpdateBill = () => {
 		setUpdatedProduct((p) => ({ ...productState, isUpdated: true }));
 	};
 
+	console.log(updatedProduct);
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!data.products || !updatedProduct.isUpdated) return;
 
 		const { isSubmitted, error } = await refetch("put", `/bills/update-bill/${id}`, { products });
-		if (isSubmitted && error) return alert(error);
-
-		navigate("/bills");
+		if (isSubmitted && !error) {
+			setTimeout(() => navigate("/bills"), 2000);
+		}
 	};
 
 	const tableOptions = {
@@ -72,6 +73,9 @@ export const UpdateBill = () => {
 	return (
 		<section className="form-widget update-bill">
 			<h3 className="title gradient-text">تعديل فاتورة</h3>
+
+			{mIsSubmitted && mError && <Alert error message={mError} />}
+			{mIsSubmitted && !mError && <Alert success message={message.success} />}
 
 			<form className="form" onSubmit={handleSubmit}>
 				<div className="info">

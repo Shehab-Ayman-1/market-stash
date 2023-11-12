@@ -2,6 +2,7 @@
 export * from "./ui/input";
 export * from "./ui/select";
 export * from "./ui/image";
+export * from "./ui/dropdown";
 
 // Home
 export * from "./home/company";

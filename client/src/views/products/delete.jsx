@@ -22,7 +22,7 @@ export const DeleteProduct = () => {
 		if (lists.length) return;
 
 		(async () => {
-			const { data: lists, isSubmitted, error } = await refetchLists("get", `/get-lists`);
+			const { data: lists, isSubmitted, error } = await refetchLists("get", `/products/get-lists`);
 			if (isSubmitted && !error) dispatch(setLists(lists));
 		})();
 	}, []);
