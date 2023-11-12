@@ -7,9 +7,10 @@ import { setHomeProducts } from "@/redux";
 import "./styles/home.scss";
 
 export const Home = () => {
-	const { homeProducts } = useSelector((state) => state.products);
 	const { isSubmitted, loading, error, refetch } = useAxios();
 	const [fetchAll, setFetchAll] = useState(false);
+
+	const { homeProducts } = useSelector((state) => state.products);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

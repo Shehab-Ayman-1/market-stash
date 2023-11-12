@@ -8,8 +8,8 @@ import "./styles/form-widget.scss";
 const productState = { isUpdated: false, index: null, name: "", count: "", price: "" };
 export const UpdateBill = () => {
 	const { id } = useParams();
-
 	const [client, setClient] = useState({ name: "", address: "" });
+
 	const [updatedProduct, setUpdatedProduct] = useState(productState);
 	const [products, setProducts] = useState([]);
 
@@ -66,8 +66,8 @@ export const UpdateBill = () => {
 		},
 	};
 
-	if (error) return <Error message={error} />;
-	if (loading) return <Loading />;
+	if (!isSubmitted && loading) return <Loading />;
+	if (isSubmitted && error) return <Error message={error} />;
 
 	return (
 		<section className="form-widget update-bill">

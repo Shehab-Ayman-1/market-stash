@@ -4,11 +4,12 @@ import { useAxios } from "@/hooks/useAxios";
 import { useDispatch, useSelector } from "react-redux";
 import { setTableLists } from "@/redux";
 import { colors } from "@/constants";
+import { Error, Loading } from "@/layout";
 import "./styles/products.scss";
 
 let index = 0;
 export const Products = () => {
-	const { isSubmitted, error, refetch } = useAxios();
+	const { isSubmitted, loading, error, refetch } = useAxios();
 	const { tableLists } = useSelector((state) => state.products);
 	const [total, setTotal] = useState(0);
 	const dispatch = useDispatch();
@@ -30,6 +31,9 @@ export const Products = () => {
 		setTotal(() => total.reduce((prev, cur) => prev + cur, 0));
 	}, [tableLists]);
 
+	if (!isSubmitted && loading) return <Loading />;
+	if (isSubmitted && error) return <Error error message={error} />;
+
 	const tableOptions = {
 		headers: {
 			title: "عرض كل المنتجات",
@@ -44,9 +48,9 @@ export const Products = () => {
 	return (
 		<section className="products-section">
 			<Table {...tableOptions}>
-				{tableLists?.map(({ catagory, companies }, i) => {
+				{tableLists?.map(({ companies }) => {
 					return companies?.map(({ company, total, products }, j) => {
-						const backgroundColor = { background: `linear-gradient(rgb(${colors[index++ % 13]}), rgb(0, 0, 0))` };
+						const backgroundColor = { background: `linear-gradient(rgba(${colors[index++ % colors.length]}), rgb(0, 0, 0))` };
 
 						return products.length ? (
 							<tbody className="table-body" key={j} style={backgroundColor}>

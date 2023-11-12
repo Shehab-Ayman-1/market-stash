@@ -1,6 +1,8 @@
 @use "@/assets/sass/mixins" as *;
 
 .widget-section {
+	@include flex(space-between);
+	background-color: get(dimBlack);
 	min-height: 50vh;
 	max-width: 300px;
 	width: 100%;
@@ -8,6 +10,7 @@
 	margin: auto;
 	margin-top: 70px;
 	border-radius: 15px;
+	flex-direction: column;
 	box-shadow: get(shadow);
 	.title {
 		color: get(white);

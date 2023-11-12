@@ -7,12 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setClients, deleteClient } from "@/redux";
 import "./styles/bills.scss";
 
+const payState = { state: false, id: "", payment: { value: 0, finished: false } };
 export const Bills = () => {
 	const { loading, error, isSubmitted, refetch } = useAxios();
 	const { data: dData, loading: dLoading, error: dError, isSubmitted: dIsSubmitted, refetch: dRefetch } = useAxios();
+
 	const { clients } = useSelector((state) => state.bills);
+
 	const [filterdData, setFilterdData] = useState();
-	const [pay, setPay] = useState({ state: false, id: "", payment: { value: 0, finished: false } });
+	const [pay, setPay] = useState(payState);
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 

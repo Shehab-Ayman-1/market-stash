@@ -7,9 +7,10 @@ import "./styles/widget.scss";
 
 const formState = { count: 0, price: 0 };
 export const Buy = () => {
-	const [formData, setFormData] = useState(formState);
-	const { data, isSubmitted, loading, error, refetch } = useAxios();
 	const { company, product } = useLocation().state;
+	const [formData, setFormData] = useState(formState);
+
+	const { data, isSubmitted, loading, error, refetch } = useAxios();
 	const navigate = useNavigate();
 
 	const handleChange = ({ target: { name, value } }) => {

@@ -43,7 +43,7 @@ export const Table = ({ children, headers, footers }) => {
 				{footers?.values?.length ? (
 					<tr>
 						{footers.values.map((value, i) => (
-							<th key={i} colSpan={headers?.body?.length} style={{ background: `linear-gradient(rgb(18, 102, 178), rgb(0, 0, 0))` }}>
+							<th key={i} colSpan={headers?.body?.length} style={{ background: `rgba(70, 6, 19, 0.7)` }}>
 								{value}
 							</th>
 						))}

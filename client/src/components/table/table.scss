@@ -14,7 +14,6 @@
 		padding-bottom: 20px;
 	}
 	td {
-		border-left: 1px solid get(dimWhite);
 		padding: 15px 8px;
 		&:last-of-type {
 			border-left: none;
@@ -30,6 +29,7 @@
 	}
 	.table-body {
 		text-align: center;
+		backdrop-filter: blur(10px);
 		.text-gray {
 			color: gray;
 		}
@@ -45,7 +45,7 @@
 			color: get(white);
 		}
 		tr:first-of-type {
-			background: linear-gradient(rgb(178, 91, 18), rgb(0, 0, 0));
+			background: linear-gradient(rgba(70, 6, 19, 0.7), rgb(0, 0, 0));
 		}
 	}
 }

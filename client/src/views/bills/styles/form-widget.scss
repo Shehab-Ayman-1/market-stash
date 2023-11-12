@@ -2,13 +2,14 @@
 
 section.form-widget {
 	@include flex(center);
-	width: 90%;
+	background: get(widgetBg);
 	max-width: 500px;
+	width: 90%;
 	padding: 10px;
 	margin: 70px auto;
-	border-radius: 10px;
+	border-radius: 20px;
 	flex-direction: column;
-	box-shadow: inset 0 0 20px get(primary);
+	box-shadow: 0 0 20px get(primary);
 	.title {
 		font-size: 2rem;
 		text-align: center;

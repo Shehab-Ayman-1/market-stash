@@ -12,8 +12,10 @@ const formState = { process: "catagory", img: defaultImg, catagory: "", company:
 export const AddProduct = () => {
 	const { lists, catagoriesList, companiesList } = useSelector(({ products }) => products);
 	const [formData, setFormData] = useState(formState);
+
 	const { data, loading, error, isSubmitted, refetch } = useAxios();
 	const { error: lError, isSubmitted: lIsSubmitted, refetch: refetchLists } = useAxios();
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

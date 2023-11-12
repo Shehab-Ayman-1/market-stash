@@ -6,8 +6,9 @@ import { Alert, Loading } from "@/layout";
 import "./styles/edit.scss";
 
 export const Show = () => {
-	const { data: company, isSubmitted, loading, error, refetch } = useAxios();
 	const id = useLocation().state;
+
+	const { data: company, isSubmitted, loading, error, refetch } = useAxios();
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -29,11 +30,11 @@ export const Show = () => {
 		},
 	};
 
+	if (!isSubmitted && loading) return <Loading />;
+	if (isSubmitted && error) return <Alert message={error} error />;
+
 	return (
 		<section className="edit-section">
-			{!isSubmitted && loading && <Loading />}
-			{isSubmitted && error && <Alert message={error} error />}
-
 			<Table {...tableOptions}>
 				<tbody className="table-body">
 					{company?.products?.map((product, i) => (

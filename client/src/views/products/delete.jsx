@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 const formState = { process: "catagory", catagory: "", company: "", product: "" };
 export const DeleteProduct = () => {
 	const { lists, catagoriesList, companiesList, productsList } = useSelector(({ products }) => products);
+	const [formData, setFormData] = useState(formState);
+
 	const { data, loading, error, isSubmitted, refetch } = useAxios();
 	const { error: lError, isSubmitted: lIsSubmitted, refetch: refetchLists } = useAxios();
-	const [formData, setFormData] = useState(formState);
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 

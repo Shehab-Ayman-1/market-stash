@@ -25,7 +25,7 @@ export const UpdateClient = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		if (!client.oldName) return alert("يجب ادخال اسم العميل القديم");
+		if (!client.oldName) return alert("يجب ادخال اسم العميل");
 		if (!client.name && !client.address) return alert("يجب ادخال اسم العميل او العنوان الخاص به");
 		if (!client.name) delete client.name;
 		if (!client.address) delete client.address;
@@ -40,7 +40,7 @@ export const UpdateClient = () => {
 			<h3 className="title gradient-text">تعديل مستخدم</h3>
 
 			<form className="form" onSubmit={handleSubmit}>
-				<SelectBox label="اسم العميل القديم" name="oldName" options={options} onChange={handleChange} />
+				<SelectBox label="اسم العميل" name="oldName" options={options} onChange={handleChange} />
 				<Input label="اسم العميل الجديد (اختياري)" name="name" handleChange={handleChange} />
 				<Input label="عنوان المحل (اختياري)" name="address" handleChange={handleChange} />
 				<button type="submit" className="btn m-auto" disabled={loading}>

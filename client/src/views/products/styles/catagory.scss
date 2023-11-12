@@ -1,7 +1,7 @@
 @use "@/assets/sass/mixins" as *;
 
 .catagory {
-	background-color: get(dimBlack);
+	background-color: get(widgetBg);
 	min-height: 50vh;
 	max-width: 300px;
 	width: 100%;
