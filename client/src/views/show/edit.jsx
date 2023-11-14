@@ -34,7 +34,7 @@ export const Edit = () => {
 			{isSubmitted && error && <Alert message={error} error />}
 			{isSubmitted && !error && <Alert message={data?.success} success />}
 
-			<h2 className="title">السعر الحالي: {product?.price || 15} جنيه</h2>
+			<h2 className="title">السعر الحالي: {product?.price || 0} قطعه</h2>
 
 			<form className="form" onSubmit={handleSubmit}>
 				<Input type="number" label="سعر المنتج الجديد" name="price" onChange={handleChange} required />
