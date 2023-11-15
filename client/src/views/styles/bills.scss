@@ -7,6 +7,15 @@
 		.field {
 			width: 100%;
 		}
+		.dropdown-section {
+			.dropdown-icon {
+				background-color: get(white);
+				width: 40px;
+				height: 40px;
+				border-radius: 9px;
+				border: 3px solid get(dimWhite);
+			}
+		}
 	}
 	.clients {
 		.client {

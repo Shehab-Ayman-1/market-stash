@@ -58,7 +58,7 @@ export const Bills = () => {
 
 			<div className="searchbar">
 				<Input label="بحث..." type="search" name="search" onChange={searchbarList} />
-				<Dropdown icon="fas fa-ellipsis-v" autoClosable>
+				<Dropdown icon="fas fa-ellipsis-v" windowClose>
 					{billsDropdown.map(({ name, icon, path }, i) => (
 						<Link to={{ pathname: path, hash: "isFirstCreate" }} className={`dropdown-item ${i + 1 === billsDropdown.length ? "last-item" : ""}`} key={i}>
 							<i className={`${icon} gradient-text icon`} />

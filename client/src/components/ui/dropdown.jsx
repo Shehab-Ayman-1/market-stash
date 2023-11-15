@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./styles/dropdown.scss";
 
-export const Dropdown = ({ icon, autoClosable, children }) => {
+export const Dropdown = ({ icon, windowClose, linkClose, children }) => {
 	const [open, setOpen] = useState(false);
 
-	const handleOpen = () => {
-		setOpen(true);
+	const handleToggle = () => {
+		setOpen(!open);
 	};
 
 	const handleClose = () => {
@@ -14,13 +14,15 @@ export const Dropdown = ({ icon, autoClosable, children }) => {
 
 	return (
 		<section className={`dropdown-section ${open ? "" : "close"}`}>
-			<div className="dropdown-icon" onClick={handleOpen}>
+			<div className="dropdown-icon" onClick={handleToggle}>
 				{typeof icon === "string" ? <i className={icon} /> : icon}
 			</div>
 
-			<div className="dropdown-items">{children}</div>
+			<div className="dropdown-items" onClick={linkClose ? handleClose : () => {}}>
+				{children}
+			</div>
 
-			<div className={`overlay ${open ? "" : "hide-display"}`} onClick={handleClose} />
+			{windowClose && <div className={`overlay ${open ? "" : "hide-display"}`} onClick={handleClose} />}
 		</section>
 	);
 };
