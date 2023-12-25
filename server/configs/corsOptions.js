@@ -1,5 +1,6 @@
-const localhosts = ["http://localhost:5173", "http://localhost:5174"];
-const whiteList = ["https://market-stash-client.vercel.app", "https://market-stash-client.netlify.app", ...localhosts];
+const localServers = ["http://localhost:5173", "http://localhost:5174", "http://localhost:8001"];
+const hosts = ["https://market-stash-client.vercel.app", "https://market-stash-client.netlify.app"];
+const whiteList = hosts.concat(localServers);
 
 export const corsOrigins = {
 	origin: (origin, callback) => {
