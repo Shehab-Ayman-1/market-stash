@@ -1,8 +1,0 @@
-@use "@/assets/sass/mixins" as *;
-
-.home-section {
-	@include flex(space-between);
-	flex-wrap: wrap;
-	gap: 10px;
-	padding: 20px;
-}
