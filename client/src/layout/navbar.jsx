@@ -15,6 +15,7 @@ export const Navbar = () => {
 			</Link>
 
 			<div className="icons">
+				<a href="https://sub-market-stash-client.vercel.app" className="fas fa-city gradient-text" />
 				<i className="fas fa-store-alt gradient-text" onClick={() => navigate("/bills")} />
 				<i className="fas fa-table gradient-text" onClick={() => navigate("/products")} />
 				<Dropdown icon="fa fa-bars gradient-text" windowClose linkClose>
