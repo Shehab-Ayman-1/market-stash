@@ -27,3 +27,5 @@ mongoose.connection.on("disconnected", () => console.log(`Server Disconnected ğŸ
 
 // Server Listenning
 app.listen(process.env.PORT || 5000);
+
+export default app;
