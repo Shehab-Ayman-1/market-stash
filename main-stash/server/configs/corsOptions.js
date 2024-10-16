@@ -1,5 +1,5 @@
 const localServers = ["http://localhost:5173", "http://localhost:5174", "http://localhost:8001"];
-const hosts = ["https://main-market-stash-client.vercel.app", "https://sub-market-stash-client.vercel.app"];
+const hosts = ["https://main-market-stash-client.vercel.app"];
 const whiteList = hosts.concat(localServers);
 
 export const corsOrigins = {

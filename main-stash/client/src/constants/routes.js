@@ -9,7 +9,7 @@ export const routes = {
 		...options,
 	},
 	remote: {
-		baseURL: "https://sub-market-stash-client.vercel.app/api",
+		baseURL: "https://main-market-stash-server.vercel.app/api",
 		...options,
 	},
 };

@@ -11,13 +11,13 @@ export const Navbar = () => {
 		<nav className="navbar-section">
 			<Link to="/" className="logo-section">
 				<img src={logo} alt="logo" />
-				<h3 className="gradient-text">المخزن الرئيسي</h3>
+				<h3 className="gradient-text">المخزن الفرعي</h3>
 			</Link>
 
 			<div className="icons">
-				<i className="fas fa-city gradient-text" onClick={() => navigate("/products")} />
+				<a href="/to-main" className="fas fa-city gradient-text" />
 				<i className="fas fa-store-alt gradient-text" onClick={() => navigate("/bills")} />
-				<a href="/to-main" className="fas fa-table gradient-text" />
+				<i className="fas fa-table gradient-text" onClick={() => navigate("/products")} />
 				<Dropdown icon="fa fa-bars gradient-text" windowClose linkClose>
 					{links.map(({ name, icon, path }, i) => (
 						<Link to={path} className={`dropdown-item ${i + 1 === links.length ? "last-item" : ""}`} key={i}>
