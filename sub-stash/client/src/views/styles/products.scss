@@ -1,0 +1,12 @@
+@use "@/assets/sass/mixins" as *;
+
+.products-section {
+	.table-section {
+		width: 100%;
+		margin-top: 0px;
+		box-shadow: inset 0 0 20px get(primary);
+		.table-head {
+			background: linear-gradient(rgba(70, 6, 19, 0.7), rgb(0, 0, 0));
+		}
+	}
+}

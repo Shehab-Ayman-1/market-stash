@@ -1,0 +1,30 @@
+@use "@/assets/sass/mixins" as *;
+
+.field {
+	margin-bottom: 10px;
+	.label-field {
+		color: get(white);
+		display: block;
+		margin-bottom: 5px;
+		font-size: 20px;
+		padding-bottom: 5px;
+	}
+	.input-field {
+		background-color: get(lightWhite);
+		color: get(black);
+		width: 100%;
+		padding: 8px 20px;
+		margin-bottom: 20px;
+		font-size: 18px;
+		font-weight: 700;
+		border-radius: 10px;
+		border: 3px solid get(dimWhite);
+		&:focus {
+			outline: 1px solid get(white);
+		}
+		&:disabled {
+			background-color: #333;
+			color: white;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+@use "@/assets/sass/mixins" as *;
+
+.alert-section {
+	@include fixed(tr, 70px, 20px);
+
+	.success {
+		@include flex(space-between);
+		background-color: green;
+		color: get(white);
+		font-size: 22px;
+		padding: 10px 15px;
+		border-radius: 5px;
+	}
+	.error {
+		@extend .success;
+		background-color: rgba(red, 0.9);
+	}
+	p {
+		padding-bottom: 10px;
+	}
+}

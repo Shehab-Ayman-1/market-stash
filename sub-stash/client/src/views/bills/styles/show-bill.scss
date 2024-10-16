@@ -1,0 +1,138 @@
+@use "@/assets/sass/mixins" as *;
+
+.hr {
+	margin-block: 20px;
+	border-bottom: 3px solid get(dimWhite);
+}
+
+.show-bill-section {
+	padding: 10px;
+	margin: auto;
+	border-radius: 10px;
+	.head-section {
+		.info {
+			@include flex(space-between);
+			h3 {
+				color: get(white);
+				font-size: 1.2rem;
+			}
+			img {
+				width: 64px;
+				height: 64px;
+				padding-right: 10px;
+			}
+		}
+		button {
+			margin: 20px auto;
+		}
+	}
+	.mid-section {
+		.info {
+			@include flex(space-between);
+			min-width: 300px;
+			flex-wrap: wrap;
+			h4 {
+				color: get(white);
+			}
+			p {
+				color: aliceblue;
+			}
+		}
+		.table-section {
+			width: 100%;
+			padding: 10px 0;
+			margin-block: 30px;
+			box-shadow: none;
+		}
+	}
+	.foot-section {
+		@include flex(space-between);
+		color: get(white);
+		flex-wrap: wrap;
+		.info {
+			@include flex(space-between);
+			min-width: 300px;
+			flex-wrap: wrap;
+			h4 {
+				color: get(white);
+			}
+			p {
+				color: aliceblue;
+			}
+		}
+	}
+	.footer {
+		text-align: center;
+		line-height: 2;
+		h4 {
+			color: get(white);
+			font-size: 1.5rem;
+		}
+		p {
+			color: aliceblue;
+			font-size: 1rem;
+		}
+	}
+}
+
+@media print {
+	.navbar-section {
+		display: none;
+	}
+	.app {
+		margin-top: 0;
+	}
+	.show-bill-section {
+		background-image: none;
+		.head-section {
+			.info {
+				h3 {
+					color: get(black);
+					font-size: 1.5rem;
+				}
+				img {
+					width: 128px;
+					height: 128px;
+				}
+			}
+			.print-btn {
+				display: none;
+			}
+		}
+		.mid-section {
+			.info {
+				h4,
+				p {
+					color: get(dimBlack);
+					font-size: 1.5rem;
+				}
+			}
+			.table-section {
+				background-color: transparent;
+				box-shadow: none;
+				td {
+					color: get(black);
+					font-size: 1.5rem;
+					padding-block: 10px;
+				}
+				th {
+					font-size: 1.5rem;
+				}
+			}
+		}
+		.foot-section {
+			color: get(black);
+			font-size: 1.5rem;
+		}
+		.footer {
+			h4 {
+				color: get(dimBlack);
+				font-size: 1.5rem;
+			}
+			p {
+				color: get(dimBlack);
+				font-size: 1rem;
+			}
+		}
+	}
+}

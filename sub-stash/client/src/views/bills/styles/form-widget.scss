@@ -1,0 +1,97 @@
+@use "@/assets/sass/mixins" as *;
+
+section.form-widget {
+	@include flex(center);
+	background: get(widgetBg);
+	max-width: 500px;
+	width: 90%;
+	padding: 10px;
+	margin: 70px auto;
+	border-radius: 20px;
+	flex-direction: column;
+	box-shadow: 0 0 20px get(primary);
+	.title {
+		font-size: 2rem;
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	.form {
+		width: 100%;
+		height: 100%;
+	}
+	.table-section {
+		td:has(.fa-edit) {
+			.fa-trash-alt {
+				margin-left: 5px;
+			}
+			.fa-edit {
+				margin-left: 5px;
+			}
+		}
+		.fa-trash-alt {
+			color: crimson;
+		}
+		.fa-edit {
+			color: orange;
+		}
+	}
+	.btn {
+		width: 80%;
+		margin: 20px auto;
+	}
+}
+
+.add-bill {
+	color: get(white);
+	width: 100%;
+	padding: 0;
+	.form {
+		width: 100%;
+		.info {
+			padding: 0 10px;
+			padding-top: 0;
+			h3 {
+				padding-bottom: 10px;
+			}
+		}
+		.table-section {
+			width: 100%;
+			margin-top: 0;
+			box-shadow: none;
+			.controllers {
+				background-color: #1e1e1e;
+				input {
+					background-color: transparent;
+					color: white;
+					width: 100%;
+					border-bottom: 1px dashed rgb(54, 53, 53);
+				}
+			}
+			.table-body {
+				padding-inline: 0;
+				td {
+					font-size: 0.8rem;
+					border: 0;
+					width: fit-content;
+					&.hash {
+						@include flex(start);
+						text-align: center;
+						margin-top: 10px;
+					}
+					&.name {
+						width: max-content;
+					}
+				}
+			}
+		}
+		.total {
+			color: get(white);
+			font-size: 1.2rem;
+			margin-right: 15px;
+		}
+	}
+}
+
+.update-bill {
+	@extend .add-bill;
+}
